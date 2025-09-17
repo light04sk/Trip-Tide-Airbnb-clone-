@@ -1,87 +1,59 @@
-<% layout("/layouts/boilerplate") %>
-<body>
-  <div class="row">
-    <div class="col-8 offset-2">
-      <h2><b>Create a List</b></h2>
-      <form method="POST" action="/listings">
+  <% layout("/layouts/boilerplate") %>
+  <body>
+    <div class="row">
+      <div class="col-8 offset-2">
+      <h2> <b>Create a List</b></h2>
+      <form method="POST" action="/listings" novalidate class="needs-validation">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            ><b>Title</b></label
-          >
-          <input
-            type="text"
-            class="form-control form-input"
-            id="exampleFormControlInput1"
-            name="listing[title]"
-            placeholder="enter title"
-          />
+          <label for="exampleFormControlInput1" class="form-label"><b>Title</b></label>
+          <input type="text" class="form-control form-input" id="exampleFormControlInput1" name="listing[title]" placeholder="enter title" required />
+          <div class="valid-feedback">Looks good! </div>
         </div>
-
+        
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label"
-            ><b>Description</b></label
-          >
+          <label for="exampleFormControlTextarea1" class="form-label"><b>Description</b></label>
           <textarea
             class="form-control form-input"
             id="exampleFormControlTextarea1"
             name="listing[description]"
             rows="4"
             placeholder="write some description"
+            required
           ></textarea>
+          <div class="invalid-feedback"> enter valid description! </div>
         </div>
-
+        
         <div class="mb-3">
           <label for="image" class="form-label"><b>Image Link</b></label>
-          <input
-            class="form-control form-input"
-            id="exampleFormControlInput1"
-            name="listing[image][url]"
-            placeholder="image-url/image-link.jpg"
-          />
+          <input class="form-control form-input" id="exampleFormControlInput1" name="listing[image][url]" placeholder="image-url/image-link.jpg" />
         </div>
 
         <div class="row">
           <div class="mb-3 col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              ><b>Location</b></label
-            >
-            <input
-              type="text"
-              class="form-control form-input"
-              id="exampleFormControlInput1"
-              name="listing[location]"
-              placeholder="enter location"
-            />
+            <label for="exampleFormControlInput1" class="form-label"><b>Location</b></label>
+            <input type="text" class="form-control form-input" id="exampleFormControlInput1" name="listing[location]" placeholder="enter location" required />
+            <div class="invalid-feedback"> enter valid location! </div>
           </div>
 
           <div class="mb-3l col-md-8">
-            <label for="exampleFormControlInput1" class="form-label"
-              ><b>Country</b></label
-            >
-            <input
-              type="text"
-              class="form-control form-input"
-              id="exampleFormControlInput1"
-              name="listing[country]"
-              placeholder="enter country"
-            />
+            <label for="exampleFormControlInput1" class="form-label"><b>Country</b></label>
+            <input type="text" class="form-control form-input" id="exampleFormControlInput1" name="listing[country]" placeholder="enter country" required />
+            <div class="invalid-feedback"> enter a Country name! </div>
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            ><b>Price (₹)</b></label
-          >
-          <input
-            class="form-control form-input"
-            id="exampleFormControlInput1"
-            name="listing[price]"
-            placeholder="enter price"
-          />
+          <label for="exampleFormControlInput1" class="form-label"><b>Price (₹)</b></label>
+          <input  class="form-control form-input" id="exampleFormControlInput1" name="listing[price]" placeholder="enter price" required />
+          <div class="invalid-feedback"> Right amount needed! </div>
         </div>
 
         <button class="form-button">Add List</button>
       </form>
-    </div>
-  </div>
-</body>
+      </div>
+    </div> 
+  </body> 
+
+
+
+
