@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Tide</title>
+</head>
+<body>
+    <div class="row">
+      <div class="col-8 offset-2">
+      <h2> <b>Create a List</b></h2>
+      <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"><b>Title</b></label>
+          <input type="text" value="<%=listing.title %>" class="form-control form-input" id="exampleFormControlInput1" name="listing[title]" placeholder="enter title" required />
+        </div>
+        
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+          <textarea
+            class="form-control form-input"
+            id="exampleFormControlTextarea1"
+            name="listing[description]"
+            rows="4"
+            required
+          ><%= listing.description %></textarea>
+        </div>
+        
+        <div class="mb-3">
+          <label for="image" class="form-label"><b>Image Link</b></label>
+          <input type="text" value="<%= listing.image.url %>" class="form-control form-input" id="exampleFormControlInput1" name="listing[image][url]" />
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="exampleFormControlInput1" class="form-label"><b>Location</b></label>
+            <input type="text" value="<%= listing.location %>" class="form-control form-input" id="exampleFormControlInput1" name="listing[location]" />
+          </div>
+
+          <div class="mb-3l col-md-8">
+            <label for="exampleFormControlInput1" class="form-label"><b>Country</b></label>
+            <input type="text" value="<%= listing.country %>" class="form-control form-input" id="exampleFormControlInput1" name="listing[country]"  />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"><b>Price (₹)</b></label>
+          <input type="number" value="<%= listing.price %>" class="form-control form-input" id="exampleFormControlInput1" name="listing[price]" />
+        </div>
+
+        <button class="form-button">submit</button>
+      </form>
+      </div>
+    </div>  
+</body>
+</html>
+  
