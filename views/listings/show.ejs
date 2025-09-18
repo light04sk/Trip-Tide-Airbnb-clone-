@@ -19,6 +19,52 @@
           <button class="form-button dlt-btn">Delete</button>
         </form>
       </div>
+
+      <!-- Review Section -->
+      <div class="container mt-5 mb-5" style="max-width: 500px">
+        <h4 class="mb-4 text-center">Leave a Review</h4>
+
+        <form
+          method="POST"
+          action="/listings/<%= listing._id %>/reviews"
+          novalidate
+          class="needs-validation"
+        >
+          <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <select
+              class="form-select"
+              id="rating"
+              name="review[rating]"
+              required
+            >
+              <option value="">Select your rating</option>
+              <option value="5">★★★★★</option>
+              <option value="4">★★★★☆</option>
+              <option value="3">★★★☆☆</option>
+              <option value="2">★★☆☆☆</option>
+              <option value="1">★☆☆☆☆</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="comment" class="form-label">Comment</label>
+            <textarea
+              class="form-control"
+              id="comment"
+              name="review[comment]"
+              rows="4"
+              placeholder="Write your feedback..."
+              required
+            ></textarea>
+            <div class="invalid-feedback">write your review!</div>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </body>
