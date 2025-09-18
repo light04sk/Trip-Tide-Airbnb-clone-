@@ -13,6 +13,7 @@ const User = require("./models/user.js");
 
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
 
 main()
   .then(() => {
@@ -82,6 +83,7 @@ app.get("/demouser", async(req, res)=>{
 
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
+app.use("/", userRouter);
 
 
 
