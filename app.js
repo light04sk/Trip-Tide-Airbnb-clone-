@@ -6,6 +6,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/expressError.js");
 const session = require("express-session");
+const flash = require("connect-flash");
 
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
@@ -41,6 +42,7 @@ const sessionOptions = {
 };
 
 app.use(session(sessionOptions));
+app.use(flash());
 
 
 app.listen(8080, () => {
@@ -49,6 +51,12 @@ app.listen(8080, () => {
 
 app.get("/", (req, res) => {
   res.send("working");
+});
+
+app.use((req, res, next)=>{
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
 });
 
 
