@@ -10,7 +10,11 @@
         <li><%= listing.country %></li>
         <br />
         <h4>&#8377;<%= listing.price.toLocaleString("en-IN") %></h4>
+        <div class="col-8 offset-9">
+          <p>~Owned by: <i><%= listing.owner.username %></i></p>
+        </div>
       </ul>
+      
       <div class="form-btns">
         <form method="GET" action="/listings/<%= listing._id %>/edit">
           <button class="form-button">Edit</button>
@@ -72,14 +76,19 @@
             <div class="card-body">
               <% for(review of listing.reviews) { %>
 
-              <h5 class="card-title"><i><u>User Review</u></i></h5>
+              <h5 class="card-title">
+                <i><u>User Review</u></i>
+              </h5>
               <p class="card-text">
                 <strong>Comment:</strong> <%= review.comment %>
               </p>
               <p class="card-text">
                 <strong>Rating:</strong> <%= review.rating %>
               </p>
-              <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+              <form
+                method="POST"
+                action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+              >
                 <button class="btn btn-dark btn-sm">Delete</button>
               </form>
               <hr />

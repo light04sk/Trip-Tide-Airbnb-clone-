@@ -2,19 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Listing = require("../models/listing.js");
 const wrapAsync = require("../utils/wrapAsync.js");
-const ExpressError = require("../utils/expressError.js");
-const { listingSchema } = require("../schema.js");
-const isLoggedIn = require("../middleware.js");
+const {isLoggedIn, isAuthorizedUser, validateListing} = require("../middleware.js");
 
-const validateListing = (req, res, next) => {
-  let { error } = listingSchema.validate(req.body);
-  if (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(400, errMsg);
-  } else {
-    next();
-  }
-};
 
 // Index Route
 router.get(
@@ -35,7 +24,7 @@ router.get(
   "/:id",
   wrapAsync(async (req, res) => {
     let { id } = req.params;
-    let listing = await Listing.findById(id).populate("reviews");
+    let listing = await Listing.findById(id).populate("reviews").populate("owner");
     if (!listing) {
       req.flash("error", "The List you are trying to access is -Not Availabe- !");
       return res.redirect("/listings");
@@ -51,6 +40,7 @@ router.post(
   validateListing,
   wrapAsync(async (req, res) => {
     const newListing = new Listing(req.body.listing);
+    newListing.owner = req.user._id; 
     await newListing.save();
     req.flash("success", "New Listing Created");
     res.redirect("/listings");
@@ -61,6 +51,7 @@ router.post(
 router.get(
   "/:id/edit",
   isLoggedIn,
+  isAuthorizedUser,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     let listing = await Listing.findById(id);
@@ -76,6 +67,7 @@ router.get(
 router.put(
   "/:id",
   isLoggedIn,
+  isAuthorizedUser,
   validateListing,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
@@ -89,6 +81,7 @@ router.put(
 router.delete(
   "/:id",
   isLoggedIn,
+  isAuthorizedUser,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
