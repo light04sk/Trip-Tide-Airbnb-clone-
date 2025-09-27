@@ -18,10 +18,10 @@
       <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
       <div class="form-btns">
         <form method="GET" action="/listings/<%= listing._id %>/edit">
-          <button class="form-button">Edit</button>
+          <button class="btn btn-outline-primary">Edit</button>
         </form>
         <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-          <button class="form-button dlt-btn">Delete</button>
+          <button class="btn btn-outline-danger">Delete</button>
         </form>
       </div>
       <% } %>
