@@ -20,7 +20,7 @@ body {
 .trip-tide-brand {
   display: flex;
   align-items: center;
-  margin-right: 1rem;
+  margin: 0rem 1rem 0rem 1.5rem;
 }
 
 .hgi-tsunami {
@@ -28,14 +28,14 @@ body {
   color: #0077cc;
 }
 
-.text-container{
+.text-container {
   display: flex;
   flex-wrap: wrap;
   width: 2rem;
   margin-bottom: 8px;
 }
 
-.text-container a{
+.text-container a {
   text-decoration: none;
   height: 18px;
 }
@@ -44,7 +44,7 @@ body {
   font-size: 1rem;
   font-weight: 600;
   color: #0077cc;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .nav-link {
@@ -52,8 +52,42 @@ body {
   font-size: large !important;
 }
 
+.nav-ri {
+  width: 22rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-ex {
+  padding: 0.5rem 1rem 0.5rem 1rem !important;
+  border-radius: 20px !important;
+}
+
+.nav-ex:hover,
+.nav-add:hover {
+  background-color: #e0e0e063;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.nav-add {
+  font-size: 15px !important;
+  padding: 0.5rem 1rem 0.5rem 1rem !important;
+  border-radius: 20px !important;
+}
+
+.nav-add i {
+  color: #0077cc;
+  margin-left: 5px;
+}
+
+.auth-btn {
+  border-radius: 15px !important;
+}
+
 /* search bar */
-.search-btn{
+.search-btn {
   background-color: #0077ccb9 !important;
   color: #fff !important;
   border: 2px solid #0077cc !important;
@@ -61,17 +95,32 @@ body {
   padding: 0 1rem 0rem 1rem !important;
 }
 
-.search-btn i{
+.search-btn i {
   display: inline;
   font-size: 15px;
   margin-right: 0.5rem;
 }
 
-.search-inp{
+.search-btn:hover {
+  background-color: #0056b3; /* darker blue */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.search-inp {
   border-radius: 20px !important;
   padding: 0.5rem 3rem 0.5rem 3rem !important;
   border: 2px solid #0077cc !important;
   font-size: 1rem !important;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-inp:hover {
+  border-color: #0056b3; /* darker blue on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 /* Footer */
@@ -178,20 +227,17 @@ body {
   height: 20rem;
   width: 25rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  border-radius: 8px; 
-  transition: box-shadow 0.3s ease; 
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
 }
 
-.show-img:hover{
+.show-img:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
-.form-btns{
+.form-btns {
   display: flex;
   justify-content: space-evenly;
   margin-top: 2rem;
   /* background-color: aquamarine; */
 }
-
-
-

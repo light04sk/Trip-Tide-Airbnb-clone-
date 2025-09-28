@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md border-bottom sticky-top">
-  <div class="container-fluid nav-con">
+  <div class="container-fluid">
     <div class="trip-tide-brand">
       <a href="/listings"><i class="hgi hgi-stroke hgi-tsunami"></i></a>
       <div class="text-container">
@@ -20,8 +20,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" aria-current="page" href="/listings">Home</a>
+      <div class="navbar-nav ms-4">
+        <a class="nav-link nav-ex" aria-current="page" href="/listings"><b>Explore</b></a>
       </div>
       <div class="navbar-nav ms-auto">
         <form class="d-flex" role="search">
@@ -35,15 +35,20 @@
           </button>
         </form>
       </div>
-      <div class="d-flex ms-auto">
-        <a class="nav-link" href="/listings/new">Add listing</a>
-        <% if(!currUser) { %>
-        <a href="/signup" class="btn btn-outline-primary btn-sm me-2"
+
+      <div class="d-flex ms-auto nav-ri">
+        <div class="navbar-nav">
+          <a class="nav-link nav-add" aria-current="page" href="/listings/new"
+            ><b>Become a host<i class="fa-regular fa-user fa-lg"></i></b></a
+          >
+        </div>
+        <% if(!currUser) { %>  
+        <a href="/signup" class="btn btn-outline-primary auth-btn"
           >Sign Up</a
         >
-        <a href="/login" class="btn btn-outline-success btn-sm me-2">Login</a>
+        <a href="/login" class="btn btn-outline-success auth-btn">Login</a>
         <% } %> <% if(currUser) { %>
-        <a href="/logout" class="btn btn-outline-danger btn-sm me-2">Logout</a>
+        <a href="/logout" class="btn btn-outline-danger auth-btn">Logout</a>
         <% } %>
       </div>
     </div>
