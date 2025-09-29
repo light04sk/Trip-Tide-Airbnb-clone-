@@ -21,8 +21,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-4">
-        <a class="nav-link nav-ex" aria-current="page" href="/listings"><b>Explore</b></a>
+        <a class="nav-link nav-ex" aria-current="page" href="/listings"
+          ><b>Explore</b></a
+        >
       </div>
+      <button
+        class="btn nav-ex"
+        type="button"
+        onclick="scrollUp()"
+        data-bs-toggle="collapse"
+        data-bs-target="#filterPanel"
+        aria-expanded="false"
+        aria-controls="filterPanel"
+      >
+       <b>Stay Match</b>
+      </button>
       <div class="navbar-nav ms-auto">
         <form class="d-flex" role="search">
           <input
@@ -39,13 +52,11 @@
       <div class="d-flex ms-auto nav-ri">
         <div class="navbar-nav">
           <a class="nav-link nav-add" aria-current="page" href="/listings/new"
-            ><b>Become a host<i class="fa-regular fa-user fa-lg"></i></b></a
-          >
+            ><b>Become a host<i class="fa-regular fa-user fa-lg"></i></b
+          ></a>
         </div>
-        <% if(!currUser) { %>  
-        <a href="/signup" class="btn btn-outline-primary auth-btn"
-          >Sign Up</a
-        >
+        <% if(!currUser) { %>
+        <a href="/signup" class="btn btn-outline-primary auth-btn">Sign Up</a>
         <a href="/login" class="btn btn-outline-success auth-btn">Login</a>
         <% } %> <% if(currUser) { %>
         <a href="/logout" class="btn btn-outline-danger auth-btn">Logout</a>

@@ -59,7 +59,7 @@ body {
 }
 
 .nav-ex {
-  padding: 0.5rem 1rem 0.5rem 1rem !important;
+  padding: 0.5rem 3rem 0.5rem 1rem !important;
   border-radius: 20px !important;
 }
 
@@ -158,6 +158,37 @@ body {
   align-items: space-evenly;
 }
 
+/* Filters */
+.filter {
+  text-align: center;
+  margin: 2rem 2rem 1rem 2rem;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+}
+
+.filter p {
+  font-size: 0.8rem;
+}
+
+.filter:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+button.btn-light:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.badge:hover {
+  background-color: #0d6efd;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
 /* cards */
 .card {
   border: none !important;
@@ -222,7 +253,6 @@ body {
 /* show list */
 
 .show-img {
-  /* margin-left: 14rem; */
   margin: 1rem 0 2rem 14rem;
   height: 20rem;
   width: 25rem;
@@ -239,5 +269,4 @@ body {
   display: flex;
   justify-content: space-evenly;
   margin-top: 2rem;
-  /* background-color: aquamarine; */
 }
