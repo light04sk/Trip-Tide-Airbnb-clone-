@@ -1,17 +1,34 @@
-  <% layout("/layouts/boilerplate") %>
-  <body>
-    <div class="row">
-      <div class="col-8 offset-2">
-      <h2> <b>Create a List</b></h2>
-      <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h2><b>Create a List</b></h2>
+      <form
+        method="POST"
+        action="/listings"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"><b>Title</b></label>
-          <input type="text" class="form-control form-input" id="exampleFormControlInput1" name="listing[title]" placeholder="enter title" required />
-          <div class="valid-feedback">Looks good! </div>
+          <label for="exampleFormControlInput1" class="form-label"
+            ><b>Title</b></label
+          >
+          <input
+            type="text"
+            class="form-control form-input"
+            id="exampleFormControlInput1"
+            name="listing[title]"
+            placeholder="enter title"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
         </div>
-        
+
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label"><b>Description</b></label>
+          <label for="exampleFormControlTextarea1" class="form-label"
+            ><b>Description</b></label
+          >
           <textarea
             class="form-control form-input"
             id="exampleFormControlTextarea1"
@@ -20,40 +37,105 @@
             placeholder="write some description"
             required
           ></textarea>
-          <div class="invalid-feedback"> enter valid description! </div>
+          <div class="invalid-feedback">enter valid description!</div>
         </div>
-      
+
         <div class="mb-3">
           <label for="image" class="form-label"><b>Upload Image</b></label>
-          <input type="file" class="form-control form-input" id="exampleFormControlInput1" name="listing[image]" />
+          <input
+            type="file"
+            class="form-control form-input"
+            id="exampleFormControlInput1"
+            name="listing[image]"
+          />
         </div>
 
         <div class="row">
           <div class="mb-3 col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"><b>Location</b></label>
-            <input type="text" class="form-control form-input" id="exampleFormControlInput1" name="listing[location]" placeholder="enter location" required />
-            <div class="invalid-feedback"> enter valid location! </div>
+            <label for="categorySelect" class="form-label"
+              ><b>Category</b></label
+            >
+            <select
+              class="form-select form-input"
+              id="categorySelect"
+              name="listing[category]"
+              required
+            >
+              <option value="Uncategorized" selected>Uncategorized</option>
+              <option value="Trending">Trending</option>
+              <option value="Rooms">Rooms</option>
+              <option value="Beach">Beach</option>
+              <option value="Mountains">Mountains</option>
+              <option value="Luxury">Luxury</option>
+              <option value="Budget">Budget</option>
+              <option value="Camping">Camping</option>
+              <option value="Farms">Farms</option>
+              <option value="Castles">Castles</option>
+            </select>
+            <div class="invalid-feedback">please select a category!</div>
           </div>
 
           <div class="mb-3l col-md-8">
-            <label for="exampleFormControlInput1" class="form-label"><b>Country</b></label>
-            <input type="text" class="form-control form-input" id="exampleFormControlInput1" name="listing[country]" placeholder="enter country" required />
-            <div class="invalid-feedback"> enter a Country name! </div>
+            <label for="exampleFormControlInput1" class="form-label"
+              ><b>Price (₹)</b></label
+            >
+            <input
+              class="form-control form-input"
+              id="exampleFormControlInput1"
+              name="listing[price]"
+              placeholder="enter price"
+              required
+            />
+            <div class="invalid-feedback">Right amount needed!</div>
+          </div>
+
+          <div class="mb-3 col-md-4">
+            <label for="exampleFormControlInput1" class="form-label"
+              ><b>Location</b></label
+            >
+            <input
+              type="text"
+              class="form-control form-input"
+              id="exampleFormControlInput1"
+              name="listing[location]"
+              placeholder="enter location"
+              required
+            />
+            <div class="invalid-feedback">enter valid location!</div>
+          </div>
+
+          <div class="mb-3l col-md-8">
+            <label for="exampleFormControlInput1" class="form-label"
+              ><b>Country</b></label
+            >
+            <input
+              type="text"
+              class="form-control form-input"
+              id="exampleFormControlInput1"
+              name="listing[country]"
+              placeholder="enter country"
+              required
+            />
+            <div class="invalid-feedback">enter a Country name!</div>
           </div>
         </div>
 
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"><b>Price (₹)</b></label>
-          <input  class="form-control form-input" id="exampleFormControlInput1" name="listing[price]" placeholder="enter price" required />
-          <div class="invalid-feedback"> Right amount needed! </div>
-        </div>
+        <!-- <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            ><b>Price (₹)</b></label
+          >
+          <input
+            class="form-control form-input"
+            id="exampleFormControlInput1"
+            name="listing[price]"
+            placeholder="enter price"
+            required
+          />
+          <div class="invalid-feedback">Right amount needed!</div>
+        </div> -->
 
         <button class="form-button">Add List</button>
       </form>
-      </div>
-    </div> 
-  </body> 
-
-
-
-
+    </div>
+  </div>
+</body>
