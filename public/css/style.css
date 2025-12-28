@@ -82,8 +82,36 @@ body {
   margin-left: 5px;
 }
 
-.auth-btn {
-  border-radius: 15px !important;
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Plain text link */
+.nav-link-auth {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  padding: 6px 4px;
+  transition: color 0.2s ease;
+}
+
+.nav-link-auth:hover {
+  color: #000;
+}
+
+/* Primary action */
+.nav-link-auth.primary {
+  background-color: #111;
+  color: #fff;
+  padding: 7px 16px;
+  border-radius: 6px;
+}
+
+.nav-link-auth.primary:hover {
+  background-color: #000;
 }
 
 /* search bar */
@@ -102,25 +130,21 @@ body {
 }
 
 .search-btn:hover {
-  background-color: #0056b3; /* darker blue */
+  background-color: #0056b3;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
 }
 
 .search-inp {
   border-radius: 20px !important;
-  padding: 0.5rem 3rem 0.5rem 3rem !important;
+  padding: 0.5rem 4rem 0.5rem 2rem !important;
   border: 2px solid #0077cc !important;
   font-size: 1rem !important;
-  transition: all 0.3s ease;
   outline: none;
 }
 
 .search-inp:hover {
-  border-color: #0056b3; /* darker blue on hover */
+  border-color: #0056b3;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
 }
 
 /* Footer */
@@ -187,7 +211,6 @@ button.btn-light:hover {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 
 /* cards */
 .card {

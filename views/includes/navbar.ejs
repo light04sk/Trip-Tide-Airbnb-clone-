@@ -35,15 +35,22 @@
         aria-expanded="false"
         aria-controls="filterPanel"
       >
-      <b>Stay Match</b>
+        <b>Stay Match</b>
       </button>
 
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
+        <form
+          class="d-flex"
+          role="search"
+          action="/listings/search"
+          method="GET"
+        >
           <input
             type="search"
+            name="q"
             class="form-control me-2 search-inp"
             placeholder="Search destinations...."
+            autocomplete="off"
           />
           <button class="btn search-btn" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>Search
@@ -57,11 +64,15 @@
             ><b>Become a host<i class="fa-regular fa-user fa-lg"></i></b
           ></a>
         </div>
-        <% if(!currUser) { %>
-        <a href="/signup" class="btn btn-outline-primary auth-btn">Sign Up</a>
-        <a href="/login" class="btn btn-outline-success auth-btn">Login</a>
-        <% } %> <% if(currUser) { %>
-        <a href="/logout" class="btn btn-outline-danger auth-btn">Logout</a>
+        <% if (!currUser) { %>
+        <div class="auth-buttons">
+          <a href="/login" class="nav-link-auth">Login</a>
+          <a href="/signup" class="nav-link-auth primary">Sign Up</a>
+        </div>
+        <% } %> <% if (currUser) { %>
+        <div class="auth-buttons">
+          <a href="/logout" class="nav-link-auth">Logout</a>
+        </div>
         <% } %>
       </div>
     </div>

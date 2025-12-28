@@ -12,16 +12,16 @@ module.exports.listingSchema = joi.object({
       category: joi
         .string()
         .valid(
-          "Trending",
-          "Rooms",
-          "Luxury",
-          "Budget",
-          "Camping",
-          "Farms",
-          "Castles",
-          "Mountains",
-          "Beach",
-          "Uncategorized"
+          "trending",
+          "rooms",
+          "luxury",
+          "budget",
+          "camping",
+          "farms",
+          "castles",
+          "mountains",
+          "beach",
+          "uncategorized"
         )
         .required(),
     })

@@ -17,6 +17,9 @@ router.get("/", wrapAsync(listingController.Index));
 // New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+// Search Route
+router.get("/search", wrapAsync(listingController.queryListing));
+
 // Show Route
 router.get("/:id", wrapAsync(listingController.showListing));
 
@@ -25,10 +28,9 @@ router.post(
   "/",
   isLoggedIn,
   validateListing,
-  upload.single('listing[image]'),
+  upload.single("listing[image]"),
   wrapAsync(listingController.createListing)
 );
-
 
 // Edit Route
 router.get(
@@ -44,7 +46,7 @@ router.put(
   isLoggedIn,
   isAuthorizedUser,
   validateListing,
-  upload.single('listing[image]'),
+  upload.single("listing[image]"),
   wrapAsync(listingController.updateListing)
 );
 
@@ -55,5 +57,10 @@ router.delete(
   isAuthorizedUser,
   wrapAsync(listingController.destroyListing)
 );
+
+// Category Route
+router.get("/category/:type", wrapAsync(listingController.categoryListing));
+
+
 
 module.exports = router;

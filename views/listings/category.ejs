@@ -1,0 +1,84 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="collapse" id="filterPanel">
+  <div class="card card-body border-0 shadow-sm">
+    <div class="d-flex flex-wrap gap-2">
+      <div class="filter" data-category="trending">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+      <div class="filter" data-category="rooms">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+      <div class="filter" data-category="budget">
+        <div><i class="fa-solid fa-hotel"></i></div>
+        <p>Budget Hotels</p>
+      </div>
+      <div class="filter" data-category="luxury">
+        <div><i class="fa-solid fa-crown"></i></div>
+        <p>Luxury Resorts</p>
+      </div>
+      <div class="filter" data-category="camping">
+        <div><i class="fa-solid fa-tent"></i></div>
+        <p>Camping</p>
+      </div>
+      <div class="filter" data-category="farms">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+      </div>
+      <div class="filter" data-category="beach">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>Beachfront</p>
+      </div>
+      <div class="filter" data-category="mountains">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Mountains</p>
+      </div>
+      <div class="filter" data-category="castles">
+        <div><i class="fa-solid fa-chess"></i></div>
+        <p>Castles</p>
+      </div>
+      <div class="filter" data-category="uncategorized">
+        <div><i class="fa-solid fa-circle-question"></i></div>
+        <p>Others</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="my-3">
+  <h4>Search Results</h4>
+  <p>Results for '<%= type %>'</p>
+</div>
+
+<% if (listings.length === 0) { %>
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="height: 50vh"
+>
+  <h1 class="text-secondary fw-light">No results found</h1>
+</div>
+<% } else { %>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-4">
+  <% for (let listing of listings) { %>
+  <a class="listing-link" href="/listings/<%= listing._id %>">
+    <div class="card">
+      <img
+        src="<%= listing.image.url %>"
+        class="card-img-top"
+        alt="listing_img"
+        style="height: 15rem"
+      />
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <p class="card-text">
+          <b><%= listing.title %></b> <br />
+          &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+        </p>
+      </div>
+    </div>
+  </a>
+  <% } %>
+</div>
+<% } %>

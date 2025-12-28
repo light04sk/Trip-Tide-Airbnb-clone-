@@ -41,10 +41,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
 stayMatch.addEventListener("click", () => {
   const currLocation = window.location.pathname;
-  if (currLocation !== "/listings") {
+
+  const isListings = currLocation === "/listings";
+  const isCategory = currLocation.startsWith("/listings/category/");
+
+  if (!isListings && !isCategory) {
     localStorage.setItem("openFilters", "true");
     window.location.href = "/listings";
   } else {
-    window.scrollTo({ top: 0, behavior: "smooth"});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
+});
+
+document.querySelectorAll(".filter").forEach((filter) => {
+  filter.addEventListener("click", () => {
+    const category = filter.getAttribute("data-category");
+    // Redirect to backend route
+    window.location.href = `/listings/category/${category}`;
+  });
 });
