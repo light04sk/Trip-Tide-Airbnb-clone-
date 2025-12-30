@@ -1,4 +1,5 @@
 const Listing = require("../models/listing.js");
+const getCoordinates = require("../utils/geocode.js");
 
 module.exports.Index = async (req, res) => {
   let allListings = await Listing.find({});
@@ -24,9 +25,24 @@ module.exports.showListing = async (req, res) => {
 module.exports.createListing = async (req, res) => {
   let url = req.file.path;
   let filename = req.file.filename;
+
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
+
+  // Geocode location + country
+  const { location, country } = req.body.listing;
+  const coords = await getCoordinates(location, country);
+
+  console.log(coords);
+
+  if (coords) {
+    newListing.geometry = {
+      type: "Point",
+      coordinates: [coords.lng, coords.lat],
+    };
+  }
+
   await newListing.save();
   req.flash("success", "New Listing Created");
   res.redirect("/listings");
@@ -50,8 +66,21 @@ module.exports.updateListing = async (req, res) => {
     let url = req.file.path;
     let filename = req.file.filename;
     listing.image = { url, filename };
-    await listing.save();
   }
+
+  const { location, country } = req.body.listing;
+  if (location && country) {
+    const coords = await getCoordinates(location, country);
+    if (coords) {
+      listing.geometry = {
+        type: "Point",
+        coordinates: [coords.lng, coords.lat],
+      };
+    }
+  }
+
+  await listing.save();
+
   req.flash("success", "Listing Updated");
   res.redirect(`/listings/${id}`);
 };
