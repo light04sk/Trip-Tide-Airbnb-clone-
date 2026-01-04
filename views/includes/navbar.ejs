@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-md border-bottom sticky-top">
-  <div class="container-fluid">
+<nav class="navbar border-bottom sticky-top">
+  <div class="container-fluid navbar-inner">
+    <!-- LOGO -->
     <div class="trip-tide-brand">
       <a href="/listings"><i class="hgi hgi-stroke hgi-tsunami"></i></a>
       <div class="text-container">
@@ -8,73 +9,58 @@
       </div>
     </div>
 
+    <!-- DESKTOP LINKS -->
+    <div class="navbar-nav desktop-only">
+      <a class="nav-link nav-ex" href="/listings"><b>Explore</b></a>
+    </div>
+
     <button
-      class="navbar-toggler"
+      id="stay-match"
+      class="btn nav-ex desktop-only"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+      data-bs-target="#filterPanel"
     >
-      <span class="navbar-toggler-icon"></span>
+      <b>Stay Match</b>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ms-4">
-        <a class="nav-link nav-ex" aria-current="page" href="/listings"
-          ><b>Explore</b></a
-        >
-      </div>
 
-      <button
-        id="stay-match"
-        class="btn nav-ex"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#filterPanel"
-        aria-expanded="false"
-        aria-controls="filterPanel"
+    <!-- SEARCH (DESKTOP + MOBILE) -->
+    <div class="navbar-nav search-wrapper">
+      <form
+        class="search-form"
+        role="search"
+        action="/listings/search"
+        method="GET"
       >
-        <b>Stay Match</b>
-      </button>
+        <input
+          type="search"
+          name="q"
+          class="form-control search-inp"
+          placeholder="Search destinations..."
+          autocomplete="off"
+        />
+        <button class="btn search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
 
-      <div class="navbar-nav ms-auto">
-        <form
-          class="d-flex"
-          role="search"
-          action="/listings/search"
-          method="GET"
-        >
-          <input
-            type="search"
-            name="q"
-            class="form-control me-2 search-inp"
-            placeholder="Search destinations...."
-            autocomplete="off"
-          />
-          <button class="btn search-btn" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>Search
-          </button>
-        </form>
-      </div>
+    <!-- RIGHT ACTIONS (DESKTOP ONLY) -->
+    <div class="nav-ri desktop-only">
+      <a class="nav-link nav-add" href="/listings/new">
+        <b>Become a host <i class="fa-regular fa-user fa-lg"></i></b>
+      </a>
 
-      <div class="d-flex ms-auto nav-ri">
-        <div class="navbar-nav">
-          <a class="nav-link nav-add" aria-current="page" href="/listings/new"
-            ><b>Become a host<i class="fa-regular fa-user fa-lg"></i></b
-          ></a>
-        </div>
-        <% if (!currUser) { %>
-        <div class="auth-buttons">
-          <a href="/login" class="nav-link-auth">Login</a>
-          <a href="/signup" class="nav-link-auth primary">Sign Up</a>
-        </div>
-        <% } %> <% if (currUser) { %>
-        <div class="auth-buttons">
-          <a href="/logout" class="nav-link-auth">Logout</a>
-        </div>
-        <% } %>
+      <% if (!currUser) { %>
+      <div class="auth-buttons">
+        <a href="/login" class="nav-link-auth">Login</a>
+        <a href="/signup" class="nav-link-auth primary">Sign Up</a>
       </div>
+      <% } %> <% if (currUser) { %>
+      <div class="auth-buttons">
+        <a href="/logout" class="nav-link-auth">Logout</a>
+      </div>
+      <% } %>
     </div>
   </div>
 </nav>

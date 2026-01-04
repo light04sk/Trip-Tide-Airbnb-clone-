@@ -1,8 +1,9 @@
 <% layout("/layouts/boilerplate") %>
 <body>
   <div class="row">
-    <div class="col-8 offset-2">
-      <h2><b>Create a List</b></h2>
+    <div class="col-12 col-md-8 offset-md-2 px-3 px-md-4 pb-5">
+      <h2 class="mb-4"><b>Edit Listing</b></h2>
+
       <form
         method="POST"
         action="/listings/<%= listing._id %>?_method=PUT"
@@ -10,107 +11,103 @@
         class="needs-validation"
         enctype="multipart/form-data"
       >
+        <!-- Title -->
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            ><b>Title</b></label
-          >
+          <label for="title" class="form-label"><b>Title</b></label>
           <input
             type="text"
-            value="<%=listing.title %>"
-            class="form-control form-input"
-            id="exampleFormControlInput1"
+            value="<%= listing.title %>"
+            class="form-control"
+            id="title"
             name="listing[title]"
             placeholder="enter title"
             required
           />
         </div>
 
+        <!-- Description -->
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label"
-            >Description</label
-          >
+          <label for="description" class="form-label"><b>Description</b></label>
           <textarea
-            class="form-control form-input"
-            id="exampleFormControlTextarea1"
+            class="form-control"
+            id="description"
             name="listing[description]"
             rows="4"
             required
           >
-          <%= listing.description %>
-          </textarea>
+<%= listing.description %></textarea
+          >
           <div class="invalid-feedback">enter valid description!</div>
         </div>
 
+        <!-- Image Upload -->
         <div class="mb-3">
           <label for="image" class="form-label"><b>Upload Image</b></label>
           <input
             type="file"
-            value="<%= listing.image.url %>"
-            class="form-control form-input"
-            id="exampleFormControlInput1"
+            class="form-control"
+            id="image"
             name="listing[image]"
           />
         </div>
 
+        <!-- Category and Price -->
         <div class="row">
-          <div class="mb-3 col-md-4">
+          <div class="mb-3 col-12 col-md-4">
             <label for="categorySelect" class="form-label"
               ><b>Category</b></label
             >
             <select
-              class="form-select form-input"
+              class="form-select"
               id="categorySelect"
               name="listing[category]"
               required
             >
               <% const categories = ["uncategorized", "trending", "rooms",
               "beach", "mountains", "luxury", "budget", "camping", "farms",
-              "castles"]%> <% categories.forEach(cat => { %> <option value="<%=
-              cat %>" <%= listing.category === cat ? "selected" : "" %>><%= cat
-              %> <% }) %>
+              "castles"]; %> <% categories.forEach(cat => { %> <option
+              value="<%= cat %>" <%= listing.category === cat ? "selected" : ""
+              %>><%= cat %> <% }) %>
             </select>
             <div class="invalid-feedback">please select a category!</div>
           </div>
 
-          <div class="mb-3l col-md-8">
-            <label for="exampleFormControlInput1" class="form-label"
-              ><b>Price (₹)</b>
-            </label>
+          <div class="mb-3 col-12 col-md-8">
+            <label for="price" class="form-label"><b>Price (₹)</b></label>
             <input
               type="number"
               value="<%= listing.price %>"
-              class="form-control form-input"
-              id="exampleFormControlInput1"
+              class="form-control"
+              id="price"
               name="listing[price]"
               required
             />
             <div class="invalid-feedback">Right amount needed!</div>
           </div>
+        </div>
 
-          <div class="mb-3 col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              ><b>Location</b>
-            </label>
+        <!-- Location and Country -->
+        <div class="row">
+          <div class="mb-3 col-12 col-md-4">
+            <label for="location" class="form-label"><b>Location</b></label>
             <input
               type="text"
               value="<%= listing.location %>"
-              class="form-control form-input"
-              id="exampleFormControlInput1"
+              class="form-control"
+              id="location"
               name="listing[location]"
               required
             />
             <div class="invalid-feedback">enter valid location!</div>
           </div>
 
-          <div class="mb-3l col-md-8">
-            <label for="exampleFormControlInput1" class="form-label"
-              ><b>Country</b>
-            </label>
+          <div class="mb-3 col-12 col-md-8">
+            <label for="country" class="form-label"><b>Country</b></label>
             <input
               type="text"
               value="<%= listing.country %>"
-              class="form-control form-input"
-              id="exampleFormControlInput1"
+              class="form-control"
+              id="country"
               name="listing[country]"
               required
             />
@@ -118,7 +115,8 @@
           </div>
         </div>
 
-        <button class="form-button">submit</button>
+        <!-- Submit Button -->
+        <button class="btn btn-primary w-100 mt-3">Submit</button>
       </form>
     </div>
   </div>

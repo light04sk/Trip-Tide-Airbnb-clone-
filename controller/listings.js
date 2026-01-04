@@ -3,11 +3,11 @@ const getCoordinates = require("../utils/geocode.js");
 
 module.exports.Index = async (req, res) => {
   let allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+  res.render("listings/index.ejs", { allListings, showMobileFooter: true });
 };
 
 module.exports.renderNewForm = (req, res) => {
-  res.render("listings/new.ejs");
+  res.render("listings/new.ejs", {showMobileFooter: false});
 };
 
 module.exports.showListing = async (req, res) => {
@@ -19,7 +19,7 @@ module.exports.showListing = async (req, res) => {
     req.flash("error", "The List you are trying to access is -Not Availabe- !");
     return res.redirect("/listings");
   }
-  res.render("listings/show.ejs", { listing });
+  res.render("listings/show.ejs", { listing, showMobileFooter: true });
 };
 
 module.exports.createListing = async (req, res) => {
@@ -55,7 +55,7 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash("error", "The List you are trying to access is -Not Availabe- !");
     return res.redirect("/listings");
   }
-  res.render("listings/edit.ejs", { listing });
+  res.render("listings/edit.ejs", { listing, showMobileFooter: false });
 };
 
 module.exports.updateListing = async (req, res) => {
@@ -95,7 +95,7 @@ module.exports.destroyListing = async (req, res) => {
 module.exports.categoryListing = async (req, res) => {
   let { type } = req.params;
   const listings = await Listing.find({ category: type.toLowerCase() });
-  res.render("listings/category.ejs", { listings, type });
+  res.render("listings/category.ejs", { listings, type, showMobileFooter: false });
 };
 
 module.exports.queryListing = async (req, res) => {
@@ -115,5 +115,5 @@ module.exports.queryListing = async (req, res) => {
   }
 
   const listings = await Listing.find(query);
-  res.render("listings/search.ejs", { listings, search });
+  res.render("listings/search.ejs", { listings, search, showMobileFooter: false });
 };
