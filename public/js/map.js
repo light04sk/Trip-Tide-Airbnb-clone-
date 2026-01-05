@@ -1,4 +1,4 @@
-maptilersdk.config.apiKey = "AExaI8TaTfq0n6YLaSAV";
+maptilersdk.config.apiKey = mapToken;
 const map = new maptilersdk.Map({
   container: "map",
   style: maptilersdk.MapStyle.STREETS,

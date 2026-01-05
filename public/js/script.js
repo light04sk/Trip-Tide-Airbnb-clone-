@@ -25,32 +25,31 @@
 
 // Stay Match button logic - auto-open, redirect and scroll-up.
 
-const stayMatch = document.querySelector("#stay-match");
-
 window.addEventListener("DOMContentLoaded", () => {
-  const shouldOpenFilters = localStorage.getItem("openFilters");
+  const stayMatch = document.querySelector("#stay-match");
+  const filterPanel = document.getElementById("filterPanel");
 
-  if (shouldOpenFilters === "true") {
-    const filterPanel = document.getElementById("filterPanel");
-    if (filterPanel) {
-      const bsCollapse = new bootstrap.Collapse(filterPanel, { toggle: true });
-      localStorage.removeItem("openFilters");
+  if (!stayMatch) return;
+
+  if (localStorage.getItem("openFilters") === "true" && filterPanel) {
+    new bootstrap.Collapse(filterPanel, { toggle: true });
+    localStorage.removeItem("openFilters");
+  }
+
+  stayMatch.addEventListener("click", () => {
+    const currLocation = window.location.pathname;
+    const isListings = currLocation === "/listings";
+    const isCategory = currLocation.startsWith("/listings/category/");
+
+    if (!isListings && !isCategory) {
+      localStorage.setItem("openFilters", "true");
+      window.location.href = "/listings";
+      return; // stop further execution after redirect
     }
-  }
-});
 
-stayMatch.addEventListener("click", () => {
-  const currLocation = window.location.pathname;
-
-  const isListings = currLocation === "/listings";
-  const isCategory = currLocation.startsWith("/listings/category/");
-
-  if (!isListings && !isCategory) {
-    localStorage.setItem("openFilters", "true");
-    window.location.href = "/listings";
-  } else {
+    // Just scroll to top — Bootstrap handles collapse automatically
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  });
 });
 
 document.querySelectorAll(".filter").forEach((filter) => {
@@ -59,4 +58,32 @@ document.querySelectorAll(".filter").forEach((filter) => {
     // Redirect to backend route
     window.location.href = `/listings/category/${category}`;
   });
+});
+
+// profile logic
+
+const profileWrapper = document.querySelector(".profile-wrapper");
+const profileBtn = document.querySelector(".profile-btn");
+
+profileBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  profileWrapper.classList.toggle("active");
+});
+
+document.addEventListener("click", () => {
+  profileWrapper.classList.remove("active");
+});
+
+// Filter logic
+
+const filtersBtn = document.querySelector(".filters-btn");
+const filtersWrapper = document.querySelector(".filters-wrapper");
+
+filtersBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  filtersWrapper.classList.toggle("active");
+});
+
+document.addEventListener("click", () => {
+  filtersWrapper.classList.remove("active");
 });

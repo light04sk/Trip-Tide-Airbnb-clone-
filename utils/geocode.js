@@ -1,8 +1,9 @@
 const axios = require("axios");
+const mapToken = process.env.MAP_TOKEN;
 
 async function getCoordinates(location, country) {
   const query = `${location}, ${country}`;
-  const url = `https://api.maptiler.com/geocoding/${encodeURIComponent(query)}.json?key=AExaI8TaTfq0n6YLaSAV`;
+  const url = `https://api.maptiler.com/geocoding/${encodeURIComponent(query)}.json?key=${mapToken}`;
 
   try {
     const response = await axios.get(url);

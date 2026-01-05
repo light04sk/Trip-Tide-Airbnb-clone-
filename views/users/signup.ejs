@@ -1,62 +1,101 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-sm">
-        <div class="card-header text-center">
-          <h4><b>Register</b></h4>
-        </div>
-        <div class="card-body px-4">
-          <form
-            method="POST"
-            action="/signup"
-            novalidate
-            class="needs-validation"
-          >
-            <div class="mb-3 mt-3">
-              <label for="email" class="form-label"><b>Email address</b></label>
-              <input
-                name="email"
-                type="email"
-                class="form-control form-input"
-                id="email"
-                placeholder="Enter your email"
-                required
-              />
-              <div class="invalid-feedback">email is required</div>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+    <div class="card border-0 shadow-lg rounded-4">
+      <!-- HEADER -->
+      <div class="card-header bg-white text-center border-0 pt-4">
+        <h3 class="fw-bold mb-0">Register</h3>
+      </div>
+
+      <!-- BODY -->
+      <div class="card-body px-4 px-md-5 py-4">
+        <form
+          method="POST"
+          action="/signup"
+          novalidate
+          class="needs-validation"
+        >
+          <!-- EMAIL -->
+          <div class="mb-4">
+            <label for="email" class="form-label fw-semibold">
+              Email address
+            </label>
+
+            <input
+              name="email"
+              type="email"
+              class="form-control form-control-lg"
+              id="email"
+              placeholder="Enter your email"
+              required
+              pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+            />
+
+            <div class="form-text mt-2">Example: user@email.com</div>
+
+            <div class="invalid-feedback mt-2">
+              Please enter a valid email address
             </div>
-            <div class="mb-3">
-              <label for="username" class="form-label"><b>Username</b></label>
-              <input
-                name="username"
-                type="text"
-                class="form-control form-input"
-                id="username"
-                placeholder="Enter a valid username"
-                required
-              />
-              <div class="invalid-feedback">Username is required</div>
+          </div>
+
+          <!-- USERNAME -->
+          <div class="mb-4">
+            <label for="username" class="form-label fw-semibold">
+              Username
+            </label>
+
+            <input
+              name="username"
+              type="text"
+              class="form-control form-control-lg"
+              id="username"
+              placeholder="Enter a valid username"
+              required
+              pattern="^[a-zA-Z0-9_]{3,20}$"
+            />
+
+            <div class="form-text mt-2">
+              3–20 characters (letters, numbers, underscore)
             </div>
-            <div class="mb-3">
-              <label for="password" class="form-label"><b>Password</b></label>
-              <input
-                name="password"
-                type="password"
-                class="form-control form-input"
-                id="password"
-                placeholder="Create a strong password"
-                required
-              />
-              <div class="invalid-feedback">Password is required</div>
+
+            <div class="invalid-feedback mt-2">
+              Username must be 3–20 characters long
             </div>
-            <div class="d-flex justify-content-center mt-3 mb-3">
-              <button type="submit" class="btn btn-primary btn-sm form-button">
-                Sign Up
-              </button>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="mb-4">
+            <label for="password" class="form-label fw-semibold">
+              Password
+            </label>
+
+            <input
+              name="password"
+              type="password"
+              class="form-control form-control-lg"
+              id="password"
+              placeholder="Create a strong password"
+              required
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+            />
+
+            <div class="form-text mt-2">
+              Min 8 chars, 1 uppercase, 1 lowercase, 1 number
             </div>
-          </form>
-        </div>
+
+            <div class="invalid-feedback mt-2">
+              Password does not meet requirements
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg rounded-3">
+              Sign Up
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

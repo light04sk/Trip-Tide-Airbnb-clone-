@@ -34,8 +34,6 @@ module.exports.createListing = async (req, res) => {
   const { location, country } = req.body.listing;
   const coords = await getCoordinates(location, country);
 
-  console.log(coords);
-
   if (coords) {
     newListing.geometry = {
       type: "Point",

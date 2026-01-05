@@ -1,18 +1,89 @@
 <nav class="bottom-nav justify-content-around align-items-center">
-  <a href="/explore" class="nav-item text-center"
+  <a href="/listings" class="nav-item text-center"
     ><i class="fas fa-search"></i>
     <div>Explore</div>
   </a>
-  <a href="/wishlists" class="nav-item text-center"
-    ><i class="fa-regular fa-heart"></i>
-    <div>Stay Match</div></a
-  >
-  <a href="/login" class="nav-item text-center"
+
+  <div class="filters-wrapper">
+    <button class="nav-item text-center filters-btn" type="button">
+      <i class="fa-regular fa-heart"></i>
+      <div>Stay match</div>
+    </button>
+
+    <!-- FILTERS POPUP -->
+    <div class="filters-popup">
+      <div class="filters-grid">
+        <div class="filter" data-category="trending">
+          <i class="fa-solid fa-fire"></i>
+          <p>Trending</p>
+        </div>
+
+        <div class="filter" data-category="rooms">
+          <i class="fa-solid fa-bed"></i>
+          <p>Rooms</p>
+        </div>
+
+        <div class="filter" data-category="budget">
+          <i class="fa-solid fa-hotel"></i>
+          <p>Budget Hotels</p>
+        </div>
+
+        <div class="filter" data-category="luxury">
+          <i class="fa-solid fa-crown"></i>
+          <p>Luxury Resorts</p>
+        </div>
+
+        <div class="filter" data-category="camping">
+          <i class="fa-solid fa-tent"></i>
+          <p>Camping</p>
+        </div>
+
+        <div class="filter" data-category="farms">
+          <i class="fa-solid fa-cow"></i>
+          <p>Farms</p>
+        </div>
+
+        <div class="filter" data-category="beach">
+          <i class="fa-solid fa-umbrella-beach"></i>
+          <p>Beachfront</p>
+        </div>
+
+        <div class="filter" data-category="mountains">
+          <i class="fa-solid fa-mountain-city"></i>
+          <p>Mountains</p>
+        </div>
+
+        <div class="filter" data-category="castles">
+          <i class="fa-solid fa-chess"></i>
+          <p>Castles</p>
+        </div>
+
+        <div class="filter" data-category="uncategorized">
+          <i class="fa-solid fa-circle-question"></i>
+          <p>Others</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="/listings/new" class="nav-item text-center"
     ><i class="fa-regular fa-house"></i>
     <div>Host</div>
   </a>
-  <a href="/login" class="nav-item text-center"
-    ><i class="fa-regular fa-user"></i>
-    <div>Profile</div>
-  </a>
+  <!-- PROFILE WITH POPUP -->
+  <div class="profile-wrapper">
+    <button class="nav-item text-center profile-btn" type="button">
+      <i class="fa-regular fa-user"></i>
+      <div>Profile</div>
+    </button>
+
+    <div class="profile-popup">
+      <% if (!currUser) { %>
+      <a href="/login">Login</a>
+      <a href="/signup">Sign Up</a>
+      <% } %> <% if (currUser) { %>
+      <a href="/logout">Logout</a>
+      <% } %>
+    </div>
+  </div>
 </nav>
