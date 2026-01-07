@@ -7,14 +7,15 @@ This project is inspired by Airbnb and focuses on learning and implementing core
 
 ## 🚀 Features
 
-- **MVC Architecture** – clean separation of concerns for scalability and maintainability.
-- **User Authentication & Authorization** – secure login/signup using regex validations.
-- **CRUD Operations** – create, read, update, and delete listings and user data.
-- **Image Uploads** – integrated with **Cloudinary** for storing and managing images.
-- **Validations** – form and input validations for better user experience.
-- **Regex for Login/Signup** – ensures strong and valid credentials.
-- **Environment Variables** – sensitive data managed via `.env` file.
-- **Error Handling** – robust error messages and feedback for users.
+- **MVC Architecture** – clean separation of models, views, and controllers for scalability.  
+- **Authentication & Authorization** – secure login/signup with regex validation and session handling.  
+- **CRUD Operations** – full create, read, update, and delete functionality for listings and reviews.  
+- **Image Uploads** – seamless integration with **Cloudinary** for storing and managing images.  
+- **Form Validations** – robust input checks to prevent invalid or insecure data.  
+- **Search Filters** – filter listings by **price, location, and amenities** for a better user experience.  
+- **Mobile Responsiveness** – optimized layouts with a **bottom navigation bar** for mobile devices.  
+- **Error Handling** – clear and user‑friendly error messages across the app.  
+- **Environment Variables** – sensitive data managed securely with `.env` configuration.  
 
 ---
 
