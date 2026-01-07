@@ -71,7 +71,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.listen(port, () => {
-  console.log("server is listening");
+  console.log(`Server running on port ${port}`);
+});
+
+app.get("/", (req, res) => {
+  res.redirect("/listings");
 });
 
 app.use((req, res, next) => {
